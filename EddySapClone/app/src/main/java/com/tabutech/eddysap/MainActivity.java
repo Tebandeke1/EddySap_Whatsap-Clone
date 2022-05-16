@@ -11,6 +11,8 @@ import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 
 import com.tabutech.eddysap.databinding.ActivityMainBinding;
+import com.tabutech.eddysap.menu.CallsFragment;
+import com.tabutech.eddysap.menu.ChatsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,12 +26,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         binding  = DataBindingUtil.setContentView(this,R.layout.activity_main);
+        setUpWithViewPager(binding.viewPager);
+        binding.tabLayout.setupWithViewPager(binding.viewPager);
     }
 
     private void setUpWithViewPager(ViewPager pager){
 
         MainActivity.SectionsPagerAdaptor adaptor = new SectionsPagerAdaptor(getSupportFragmentManager());
 
+        adaptor.addFragment(new ChatsFragment(),"Chats");
+        adaptor.addFragment(new ChatsFragment(),"Status");
+        adaptor.addFragment(new ChatsFragment(),"Calls");
         pager.setAdapter(adaptor);
     }
 

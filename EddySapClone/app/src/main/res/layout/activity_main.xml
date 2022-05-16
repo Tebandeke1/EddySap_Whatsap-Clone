@@ -13,12 +13,12 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:background="@color/purple_500">
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="Taia Sap"
+            app:title="EddySap"
             app:titleTextColor="@color/white">
 
         </androidx.appcompat.widget.Toolbar>
@@ -27,20 +27,20 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         app:tabGravity="fill"
-        app:tabTextColor="@color/purple_500"
+        app:tabTextColor="@color/white"
         app:tabIndicatorColor="@color/purple_500"
         app:tabSelectedTextColor="@color/white"
+        app:tabIndicator="@color/black"
         app:tabIndicatorHeight="?actionBarSize"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/purple_500">
+        android:background="@color/purple_500"
+        android:layout_height="40dp">
 
     </com.google.android.material.tabs.TabLayout>
 
-    <androidx.viewpager2.widget.ViewPager2
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:visibility="visible"
-        android:layout_marginTop="50dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

@@ -2,4 +2,5 @@
     <string name="app_name">EddySap</string>
     <string name="tabu_technologies">Tabu Technologies.</string>
     <string name="eddy_sap">Eddy Sap</string>
+    <string name="cals_fragment">Calls</string>
 </resources>

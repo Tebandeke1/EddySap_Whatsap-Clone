@@ -5,6 +5,9 @@
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.18177083333333333" />
+        <entry key="app/src/main/res/layout/fragment_calls.xml" value="0.18177083333333333" />
+        <entry key="app/src/main/res/layout/fragment_chats.xml" value="0.19739583333333333" />
+        <entry key="app/src/main/res/layout/fragment_status.xml" value="0.18177083333333333" />
       </map>
     </option>
   </component>
