@@ -3,4 +3,7 @@
     <string name="tabu_technologies">Tabu Technologies.</string>
     <string name="eddy_sap">Eddy Sap</string>
     <string name="cals_fragment">Calls</string>
+    <string name="search">Search</string>
+    <string name="more">More</string>
+    <string name="floating_bar">floating for layouts</string>
 </resources>

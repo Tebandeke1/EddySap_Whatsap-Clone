@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,6 +11,7 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@color/purple_500">
@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:title="EddySap"
+            android:id="@+id/toolbar"
             app:titleTextColor="@color/white">
 
         </androidx.appcompat.widget.Toolbar>
@@ -30,8 +31,8 @@
         app:tabTextColor="@color/white"
         app:tabIndicatorColor="@color/purple_500"
         app:tabSelectedTextColor="@color/white"
-        app:tabIndicator="@color/black"
-        app:tabIndicatorHeight="?actionBarSize"
+        app:tabIndicator="@color/white"
+        app:tabIndicatorHeight="5dp"
         android:layout_width="match_parent"
         android:background="@color/purple_500"
         android:layout_height="40dp">
@@ -43,8 +44,19 @@
         android:visibility="visible"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="match_parent"
+        android:layout_below="@id/tab_layout"
         android:layout_height="match_parent"/>
 
-</LinearLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="20dp"
+        android:id="@+id/fab_action"
+        android:src="@drawable/cart_nesso"
+        android:contentDescription="@string/floating_bar" />
+
+</RelativeLayout>
 
 </layout>

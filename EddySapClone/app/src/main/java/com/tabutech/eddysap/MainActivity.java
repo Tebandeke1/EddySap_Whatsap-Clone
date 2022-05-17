@@ -8,7 +8,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.tabutech.eddysap.databinding.ActivityMainBinding;
 import com.tabutech.eddysap.menu.CallsFragment;
@@ -28,6 +34,44 @@ public class MainActivity extends AppCompatActivity {
         binding  = DataBindingUtil.setContentView(this,R.layout.activity_main);
         setUpWithViewPager(binding.viewPager);
         binding.tabLayout.setupWithViewPager(binding.viewPager);
+
+        setSupportActionBar(binding.toolbar);
+
+        binding.viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                changeFabIcon(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id = item.getItemId();
+
+        if(id == R.id.search_menu){
+            Toast.makeText(this, "The search icon pressed", Toast.LENGTH_SHORT).show();
+        }else if (id == R.id.menu_more){
+            Toast.makeText(this, "The menu more icon pressed", Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void setUpWithViewPager(ViewPager pager){
@@ -74,5 +118,18 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private void changeFabIcon(final int index){
 
+        binding.fabAction.hide();
+
+        new Handler().postDelayed(() ->{
+            switch (index){
+                case 0: binding.fabAction.setImageDrawable(getDrawable(R.drawable.cart));
+                case 1: binding.fabAction.setImageDrawable(getDrawable(R.drawable.camera));
+                case 2: binding.fabAction.setImageDrawable(getDrawable(R.drawable.call));
+            }
+            binding.fabAction.show();
+        },400);
+    }
 }
