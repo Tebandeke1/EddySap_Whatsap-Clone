@@ -6,4 +6,5 @@
     <string name="search">Search</string>
     <string name="more">More</string>
     <string name="floating_bar">floating for layouts</string>
+    <string name="status">Tap to add status update</string>
 </resources>
