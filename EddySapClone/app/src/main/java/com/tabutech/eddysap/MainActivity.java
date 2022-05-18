@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.tabutech.eddysap.databinding.ActivityMainBinding;
 import com.tabutech.eddysap.menu.CallsFragment;
 import com.tabutech.eddysap.menu.ChatsFragment;
+import com.tabutech.eddysap.menu.StatusFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,8 +80,8 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.SectionsPagerAdaptor adaptor = new SectionsPagerAdaptor(getSupportFragmentManager());
 
         adaptor.addFragment(new ChatsFragment(),"Chats");
-        adaptor.addFragment(new ChatsFragment(),"Status");
-        adaptor.addFragment(new ChatsFragment(),"Calls");
+        adaptor.addFragment(new StatusFragment(),"Status");
+        adaptor.addFragment(new CallsFragment(),"Calls");
         pager.setAdapter(adaptor);
     }
 
@@ -125,9 +126,9 @@ public class MainActivity extends AppCompatActivity {
 
         new Handler().postDelayed(() ->{
             switch (index){
-                case 0: binding.fabAction.setImageDrawable(getDrawable(R.drawable.cart));
-                case 1: binding.fabAction.setImageDrawable(getDrawable(R.drawable.camera));
-                case 2: binding.fabAction.setImageDrawable(getDrawable(R.drawable.call));
+                case 0: binding.fabAction.setImageDrawable(getDrawable(R.drawable.cart));break;
+                case 1: binding.fabAction.setImageDrawable(getDrawable(R.drawable.camera));break;
+                case 2: binding.fabAction.setImageDrawable(getDrawable(R.drawable.call));break;
             }
             binding.fabAction.show();
         },400);

@@ -42,9 +42,9 @@ public class ChatsFragment extends Fragment {
     }
 
     private void getListItems() {
-        lists.add(new ChatList("","","","",""));
-        lists.add(new ChatList("","","","",""));
-        lists.add(new ChatList("","","","",""));
+        lists.add(new ChatList("01","Bobi Wine ","This is Kyagulanyi sentamu ","20/03/2022","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTThLlO--CKV-TsRKKt9hGdbZTRzB_xSP4YLQ&usqp=CAU"));
+        lists.add(new ChatList("02","Spice Diana","This is the best ugandan diva per now","03/12/2019","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsy3FoWorbAhpKDxM3OKQjwew0LwvhYvlLxg&usqp=CAU"));
+        lists.add(new ChatList("03","Eddy Kenzo","This is the signal hit maker","12/04/2021","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOzTRDtVlQ6A055Y8NAlTViBiDcb5_vhDDvw&usqp=CAU"));
 
         recyclerView.setAdapter(new ChatListAdaptor(lists,getContext()));
     }
