@@ -25,7 +25,6 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:src="@drawable/place_holder"
-                app:civ_border_width="2dp"
                 android:layout_margin="5dp"
                 app:civ_border_color="#FF000000"/>
 
@@ -51,7 +50,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="My Status"
+                android:text="@string/my_status"
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:textColor="@color/black"

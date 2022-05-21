@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.tabutech.eddysap.View.MainActivity;
+import com.tabutech.eddysap.View.starUp.WelcomeScreenActivity;
+
 public class SplashScreenActivity extends AppCompatActivity {
 
     @Override
@@ -14,7 +17,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         new Handler().postDelayed(() ->{
-            startActivity(new Intent(SplashScreenActivity.this,MainActivity.class));
+            startActivity(new Intent(SplashScreenActivity.this, WelcomeScreenActivity.class));
             finish();
         },2000);
     }
