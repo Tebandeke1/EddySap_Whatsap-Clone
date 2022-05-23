@@ -15,10 +15,14 @@
     <string name="eddysap_will_send_an_sms_massage_to_verify_your_number_what_s_my_phone_number">EddySap will send an SMS massage to verify your number.What\'s my phone number?</string>
     <string name="plus">+</string>
     <string name="number_p">phone number</string>
-    <string name="next">next</string>
+    <string name="next">NEXT</string>
     <string name="from">From</string>
     <string name="name">Name</string>
     <string name="dete">17/05/2022</string>
     <string name="description">Description</string>
     <string name="my_status">My Status</string>
+    <string name="enter_code">Enter code here</string>
+    <string name="agree_and_continue">Agree and continue.</string>
+    <string name="date">12/06/2022 09:34pm</string>
+    <string name="confirm">Confirm</string>
 </resources>

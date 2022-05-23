@@ -6,7 +6,7 @@
         <entry key="app/src/main/res/drawable/call.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/drawable/ic_baseline_call_24.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19739583333333333" />
-        <entry key="app/src/main/res/layout/activity_phone_login.xml" value="0.19739583333333333" />
+        <entry key="app/src/main/res/layout/activity_phone_login.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_welcome_screen.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_calls.xml" value="0.18177083333333333" />
