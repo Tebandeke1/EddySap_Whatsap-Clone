@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -17,6 +18,8 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.tabutech.eddysap.R;
+import com.tabutech.eddysap.View.auth.PhoneLoginActivity;
+import com.tabutech.eddysap.View.auth.SetUserInfoActivity;
 import com.tabutech.eddysap.databinding.ActivityMainBinding;
 import com.tabutech.eddysap.menu.CallsFragment;
 import com.tabutech.eddysap.menu.ChatsFragment;
@@ -70,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         if(id == R.id.search_menu){
             Toast.makeText(this, "The search icon pressed", Toast.LENGTH_SHORT).show();
         }else if (id == R.id.menu_more){
+            startActivity(new Intent(MainActivity.this, SetUserInfoActivity.class));
             Toast.makeText(this, "The menu more icon pressed", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);

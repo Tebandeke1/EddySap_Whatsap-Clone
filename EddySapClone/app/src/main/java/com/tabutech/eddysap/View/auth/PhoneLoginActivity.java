@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.FirebaseTooManyRequestsException;
@@ -23,6 +24,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.tabutech.eddysap.Model.Users.Users;
 import com.tabutech.eddysap.R;
 import com.tabutech.eddysap.View.MainActivity;
 import com.tabutech.eddysap.databinding.ActivityPhoneLoginBinding;
@@ -40,6 +44,9 @@ public class PhoneLoginActivity extends AppCompatActivity {
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
     private FirebaseAuth mAuth;
 
+    private FirebaseUser user;
+    private FirebaseFirestore firestore;
+
     private ProgressDialog progress;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +55,7 @@ public class PhoneLoginActivity extends AppCompatActivity {
 
         etPhone = findViewById(R.id.ed_phone);
         mAuth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
 
         progress = new ProgressDialog(this);
 
@@ -150,8 +158,29 @@ public class PhoneLoginActivity extends AppCompatActivity {
                         progress.dismiss();
                         FirebaseUser user = task.getResult().getUser();
 
-                        startActivity(new Intent(PhoneLoginActivity.this, MainActivity.class));
-                        finish();
+                        if(user != null){
+                            String userID = user.getUid();
+
+                            Users users = new Users(userID,
+                                    "",
+                                    user.getPhoneNumber(),
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    "");
+                            firestore.collection("Users").document("UserInfo").collection(userID)
+                                    .add(users).addOnSuccessListener(documentReference -> {
+                                        startActivity(new Intent(PhoneLoginActivity.this, SetUserInfoActivity.class));
+                                        finish();
+                                    });
+                        }else{
+                            Toast.makeText(getApplicationContext(), "Something Wrong!!", Toast.LENGTH_SHORT).show();
+                        }
+
+
                     } else {
                         Log.w(TAG, "signInWithCredential:failure", task.getException());
                         progress.dismiss();

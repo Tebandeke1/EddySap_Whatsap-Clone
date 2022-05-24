@@ -25,4 +25,7 @@
     <string name="agree_and_continue">Agree and continue.</string>
     <string name="date">12/06/2022 09:34pm</string>
     <string name="confirm">Confirm</string>
+    <string name="profile_info">Profile info</string>
+    <string name="words">Please provide your name and an optional profile photo</string>
+    <string name="type_your_name_here">Type your name here</string>
 </resources>
