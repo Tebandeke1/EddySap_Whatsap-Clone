@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,4 +13,52 @@
         android:layout_height="match_parent"
         android:id="@+id/recycleView"/>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/invite_layout"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Invite your friends"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:layout_marginTop="30dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="None of your contacts is using EddySap Use the button bellow to invite them."
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="20dp"/>
+
+        <Button
+            android:id="@+id/btn_invite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/purple_500"
+            android:text="Invite Friends "
+            android:textColor="@color/white"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Chart with your friends who are using EddySap on android phones."
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="20dp"/>
+
+
+    </LinearLayout>
+
 </FrameLayout>
+
+</layout>

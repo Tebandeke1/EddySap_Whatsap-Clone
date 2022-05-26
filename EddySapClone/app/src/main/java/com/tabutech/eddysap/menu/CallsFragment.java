@@ -43,7 +43,7 @@ public class CallsFragment extends Fragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        getData();
+       // getData();
         return view;
     }
 

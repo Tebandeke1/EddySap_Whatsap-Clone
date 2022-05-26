@@ -6,11 +6,25 @@
         android:id="@+id/search_menu"
         app:showAsAction="ifRoom"
         android:title="@string/search" />
-    <item
-        android:icon="@drawable/menu_more"
-        android:id="@+id/menu_more"
-        app:showAsAction="always"
-        android:title="@string/more" />
 
+    <group
+        android:id="@+id/action_more">
+
+        <item
+            android:id="@+id/action_newGroup"
+            android:title="New Group"/>
+        <item
+            android:id="@+id/action_newBroadcast"
+            android:title="New BroadCast"/>
+        <item
+            android:id="@+id/action_ed_web"
+            android:title="EddySap WEb"/>
+        <item
+            android:id="@+id/action_starred"
+            android:title="Starred Message"/>
+        <item
+            android:id="@+id/action_settings"
+            android:title="Settings"/>
+    </group>
 
 </menu>

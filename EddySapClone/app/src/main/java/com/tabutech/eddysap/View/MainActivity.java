@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.tabutech.eddysap.R;
+import com.tabutech.eddysap.View.Settings.SettingsActivity;
 import com.tabutech.eddysap.View.auth.PhoneLoginActivity;
 import com.tabutech.eddysap.View.auth.SetUserInfoActivity;
 import com.tabutech.eddysap.databinding.ActivityMainBinding;
@@ -70,11 +71,19 @@ public class MainActivity extends AppCompatActivity {
 
         int id = item.getItemId();
 
-        if(id == R.id.search_menu){
-            Toast.makeText(this, "The search icon pressed", Toast.LENGTH_SHORT).show();
-        }else if (id == R.id.menu_more){
-            startActivity(new Intent(MainActivity.this, SetUserInfoActivity.class));
-            Toast.makeText(this, "The menu more icon pressed", Toast.LENGTH_SHORT).show();
+        switch (id){
+
+            case R.id.search_menu: Toast.makeText(this, "The search icon pressed", Toast.LENGTH_SHORT).show();break;
+            case R.id.action_more: Toast.makeText(this, "More", Toast.LENGTH_SHORT).show();break;
+            case R.id.action_newGroup: Toast.makeText(this, "The New Group icon pressed", Toast.LENGTH_SHORT).show();break;
+            case R.id.action_newBroadcast: Toast.makeText(this, "The New Broadcast icon pressed", Toast.LENGTH_SHORT).show();break;
+            case R.id.action_ed_web: Toast.makeText(this, "The EddySap web icon pressed", Toast.LENGTH_SHORT).show();break;
+            case R.id.action_starred: Toast.makeText(this, "The Starred icon pressed", Toast.LENGTH_SHORT).show();break;
+            case R.id.action_settings:
+                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+                Toast.makeText(this, "The Settings icon pressed", Toast.LENGTH_SHORT).show();
+                break;
+
         }
         return super.onOptionsItemSelected(item);
     }
