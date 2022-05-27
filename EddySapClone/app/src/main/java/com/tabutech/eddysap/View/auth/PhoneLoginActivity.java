@@ -36,7 +36,7 @@ import java.util.concurrent.TimeUnit;
 public class PhoneLoginActivity extends AppCompatActivity {
 
     private ActivityPhoneLoginBinding binding;
-    private EditText etPhone,etCode;
+    private EditText etPhone;
 
     private static final String TAG = "PhoneLoginActivity";
     private String mVerificationId;

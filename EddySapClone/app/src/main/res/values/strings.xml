@@ -12,7 +12,7 @@
     <string name="_256">256</string>
     <string name="sms_charges">Carrier sms charges may apply.</string>
     <string name="enter_phone">Enter Your Phone Number</string>
-    <string name="eddysap_will_send_an_sms_massage_to_verify_your_number_what_s_my_phone_number">EddySap will send an SMS massage to verify your number.What\'s my phone number?</string>
+    <string name="what_s_my_phone_number">EddySap will send an SMS massage to verify your number.What\'s my phone number?</string>
     <string name="plus">+</string>
     <string name="number_p">phone number</string>
     <string name="next">NEXT</string>
@@ -28,5 +28,5 @@
     <string name="profile_info">Profile info</string>
     <string name="words">Please provide your name and an optional profile photo</string>
     <string name="type_your_name_here">Type your name here</string>
-    <string name="notifications_setting"><![CDATA[Massage,group & call tons]]></string>
+    <string name="notifications_setting"><![CDATA[Massage,group & call tones]]></string>
 </resources>
