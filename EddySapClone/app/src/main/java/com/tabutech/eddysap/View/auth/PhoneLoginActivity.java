@@ -157,29 +157,28 @@ public class PhoneLoginActivity extends AppCompatActivity {
 
                         progress.dismiss();
                         FirebaseUser user = task.getResult().getUser();
-
-                        if(user != null){
-                            String userID = user.getUid();
-
-                            Users users = new Users(userID,
-                                    "",
-                                    user.getPhoneNumber(),
-                                    "",
-                                    "",
-                                    "",
-                                    "",
-                                    "",
-                                    "",
-                                    "");
-                            firestore.collection("Users").document("UserInfo").collection(userID)
-                                    .add(users).addOnSuccessListener(documentReference -> {
-                                        startActivity(new Intent(PhoneLoginActivity.this, SetUserInfoActivity.class));
-                                        finish();
-                                    });
-                        }else{
-                            Toast.makeText(getApplicationContext(), "Something Wrong!!", Toast.LENGTH_SHORT).show();
-                        }
-
+                        startActivity(new Intent(PhoneLoginActivity.this, SetUserInfoActivity.class));
+//                        if(user != null){
+//                            String userID = user.getUid();
+//
+//                            Users users = new Users(userID,
+//                                    "",
+//                                    user.getPhoneNumber(),
+//                                    "",
+//                                    "",
+//                                    "",
+//                                    "",
+//                                    "",
+//                                    "",
+//                                    "");
+//                            firestore.collection("Users").document("UserInfo").collection(userID)
+//                                    .add(users).addOnSuccessListener(documentReference -> {
+//
+//                                        finish();
+//                                    });
+//                        }else{
+//                            Toast.makeText(getApplicationContext(), "Something Wrong!!", Toast.LENGTH_SHORT).show();
+//                        }
 
                     } else {
                         Log.w(TAG, "signInWithCredential:failure", task.getException());

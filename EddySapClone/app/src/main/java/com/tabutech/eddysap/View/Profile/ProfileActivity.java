@@ -1,23 +1,24 @@
 package com.tabutech.eddysap.View.Profile;
 
-import androidx.activity.result.contract.ActivityResultContracts;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.databinding.DataBindingUtil;
-
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
-import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.MimeTypeMap;
+import android.widget.EditText;
 import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -29,8 +30,11 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
+import com.tabutech.eddysap.Common.Common;
+import com.tabutech.eddysap.Model.Users.Users;
 import com.tabutech.eddysap.R;
+import com.tabutech.eddysap.View.Display.ViewProfileImageActivity;
+import com.tabutech.eddysap.View.MainActivity;
 import com.tabutech.eddysap.databinding.ActivityProfileBinding;
 
 import java.util.HashMap;
@@ -42,7 +46,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private FirebaseFirestore firestore;
     private FirebaseUser firebaseUser;
-    private BottomSheetDialog bottomSheetDialog;
+    private BottomSheetDialog bottomSheetDialog,bottomSheetDialogName;
     private Uri image;
 
     private ProgressDialog dialog;
@@ -50,6 +54,7 @@ public class ProfileActivity extends AppCompatActivity {
     private static int GAlLERY_REQUEST_CODE =2222;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_profile);
 
@@ -64,11 +69,76 @@ public class ProfileActivity extends AppCompatActivity {
             getData();
         }
         initActionClick();
+
+        initNameLayout();
+    }
+
+    private void initNameLayout() {
+
+        binding.editNameLayout.setOnClickListener(v ->{
+            showLayoutEdit();
+        });
+    }
+
+    private void showLayoutEdit() {
+
+        bottomSheetDialogName = new BottomSheetDialog(this);
+
+        View view =  getLayoutInflater().inflate(R.layout.bottom_sheet_edit_name,null);
+
+        EditText nameTxt = view.findViewById(R.id.enter_name);
+        view.findViewById(R.id.btn_save).setOnClickListener( v->{
+
+            if (TextUtils.isEmpty(nameTxt.getText().toString())){
+                Toast.makeText(getApplicationContext(), "Make sure name field is not empty.", Toast.LENGTH_SHORT).show();
+            }else {
+                doUpdate(nameTxt.getText().toString());
+                bottomSheetDialogName.dismiss();
+               // Toast.makeText(getApplicationContext(), , Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
+        view.findViewById(R.id.btn_cancel).setOnClickListener(v ->{
+            bottomSheetDialogName.dismiss();
+        });
+
+        bottomSheetDialogName.setContentView(view);
+        Objects.requireNonNull(bottomSheetDialogName.getWindow()).addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+        bottomSheetDialogName.setOnDismissListener(dialogInterface -> bottomSheetDialogName = null);
+
+        bottomSheetDialogName.show();
+    }
+    private void doUpdate(String name) {
+        dialog.setMessage("Please wait.....");
+        dialog.show();
+        firestore.collection("Users").document(firebaseUser.getUid()).update("userName",name)
+                .addOnSuccessListener(unused -> {
+                    dialog.dismiss();
+                    Toast.makeText(getApplicationContext(), "Name updated successfully", Toast.LENGTH_SHORT).show();
+                    getData();
+                });
+
     }
 
     private void initActionClick() {
         binding.fabCamera.setOnClickListener(view -> {
             showButtonPickPhoto();
+        });
+
+        binding.imageProfile.setOnClickListener(v ->{
+
+            binding.imageProfile.invalidate();
+            Drawable dr = binding.imageProfile.getDrawable();
+
+            Common.IMAGE_BITMAP = ((BitmapDrawable)dr.getCurrent()).getBitmap();
+
+            ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    ProfileActivity.this,binding.imageProfile,"image");
+
+            Intent intent = new Intent(ProfileActivity.this, ViewProfileImageActivity.class);
+            startActivity(intent,compat.toBundle());
         });
     }
 

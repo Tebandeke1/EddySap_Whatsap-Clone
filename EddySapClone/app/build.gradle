@@ -58,4 +58,6 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:30.0.2')
     implementation 'com.google.firebase:firebase-analytics'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
+    //zoom image dependency
+    implementation 'com.jsibbold:zoomage:1.3.1'
 }
