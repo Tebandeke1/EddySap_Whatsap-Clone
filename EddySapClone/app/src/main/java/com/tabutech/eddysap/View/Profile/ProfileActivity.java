@@ -6,8 +6,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.databinding.DataBindingUtil;
+
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -35,6 +38,7 @@ import com.tabutech.eddysap.Model.Users.Users;
 import com.tabutech.eddysap.R;
 import com.tabutech.eddysap.View.Display.ViewProfileImageActivity;
 import com.tabutech.eddysap.View.MainActivity;
+import com.tabutech.eddysap.View.starUp.WelcomeScreenActivity;
 import com.tabutech.eddysap.databinding.ActivityProfileBinding;
 
 import java.util.HashMap;
@@ -140,6 +144,30 @@ public class ProfileActivity extends AppCompatActivity {
             Intent intent = new Intent(ProfileActivity.this, ViewProfileImageActivity.class);
             startActivity(intent,compat.toBundle());
         });
+
+        binding.signOut.setOnClickListener(v -> {
+            signOut();
+        });
+    }
+
+    private void signOut() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this);
+
+        builder.setTitle("SignOut Dialog!")
+                .setMessage("Are you sure you want to sign out?")
+                .setPositiveButton("Yes", (dialogInterface, i) -> {
+                    dialogInterface.cancel();
+                    FirebaseAuth.getInstance().signOut();
+                    startActivity(new Intent(ProfileActivity.this, WelcomeScreenActivity.class));
+
+                })
+                .setNegativeButton("No",((dialogInterface, i) -> {
+                    dialogInterface.cancel();
+                }));
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void showButtonPickPhoto() {

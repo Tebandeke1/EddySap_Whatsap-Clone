@@ -167,7 +167,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="15sp"
-                android:text="At work"/>
+                android:text="@string/using_eddy_sap"/>
 
         </LinearLayout>
     </LinearLayout>
@@ -220,6 +220,17 @@
 
         </LinearLayout>
     </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sign_out"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="sign out"
+        android:textStyle="bold"
+        android:background="@android:color/transparent"
+        android:textColor="@color/purple_500"/>
 
 
 

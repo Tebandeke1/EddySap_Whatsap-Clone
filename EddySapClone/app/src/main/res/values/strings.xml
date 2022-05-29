@@ -29,4 +29,5 @@
     <string name="words">Please provide your name and an optional profile photo</string>
     <string name="type_your_name_here">Type your name here</string>
     <string name="notifications_setting"><![CDATA[Massage,group & call tones]]></string>
+    <string name="using_eddy_sap">Hey there! i am using EddySap.</string>
 </resources>

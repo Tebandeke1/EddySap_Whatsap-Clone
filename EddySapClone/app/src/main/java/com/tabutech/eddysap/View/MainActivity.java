@@ -15,9 +15,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.tabutech.eddysap.R;
+import com.tabutech.eddysap.View.Contact.ContactActivity;
 import com.tabutech.eddysap.View.Settings.SettingsActivity;
 import com.tabutech.eddysap.View.auth.PhoneLoginActivity;
 import com.tabutech.eddysap.View.auth.SetUserInfoActivity;
@@ -42,6 +44,13 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(binding.toolbar);
 
+        binding.fabAction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, ContactActivity.class));
+            }
+        });
+
         binding.viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -51,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 changeFabIcon(position);
+
             }
 
             @Override
@@ -139,11 +149,13 @@ public class MainActivity extends AppCompatActivity {
 
         new Handler().postDelayed(() ->{
             switch (index){
-                case 0: binding.fabAction.setImageDrawable(getDrawable(R.drawable.cart));break;
+                case 0: binding.fabAction.setImageDrawable(getDrawable(R.drawable.cart));
+                break;
                 case 1: binding.fabAction.setImageDrawable(getDrawable(R.drawable.camera));break;
                 case 2: binding.fabAction.setImageDrawable(getDrawable(R.drawable.call));break;
             }
             binding.fabAction.show();
         },400);
     }
+
 }
