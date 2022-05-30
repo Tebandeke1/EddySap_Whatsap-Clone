@@ -1,6 +1,7 @@
 package com.tabutech.eddysap.Adaptor;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.tabutech.eddysap.Model.Users.Users;
 import com.tabutech.eddysap.R;
+import com.tabutech.eddysap.View.Chat.ChatsActivity;
+
 import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -42,6 +45,13 @@ public class ContactAdaptor extends RecyclerView.Adapter<ContactAdaptor.ViewHold
         holder.description.setText(user.getBio());
 
         Glide.with(context).load(user.getImageProfile()).into(holder.imageView);
+
+        holder.itemView.setOnClickListener(v ->{
+            context.startActivity(new Intent(context, ChatsActivity.class)
+                    .putExtra("userId",user.getUserId())
+                    .putExtra("userName",user.getUserName())
+                    .putExtra("userProfile",user.getImageProfile()));
+        });
     }
 
     @Override

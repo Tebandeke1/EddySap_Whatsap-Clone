@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EddySap">
         <activity
+            android:name=".View.Chat.ChatsActivity"
+            android:exported="true" />
+        <activity
             android:name=".View.Contact.ContactActivity"
             android:exported="true" />
         <activity
@@ -45,14 +48,14 @@
             android:name=".View.MainActivity"
             android:exported="true" />
     </application>
-    <uses-permission
-        android:name="android.permission.ACCESS_NETWORK_STATE"
-        tools:ignore="ManifestOrder" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission
+        android:name="android.permission.ACCESS_NETWORK_STATE"
+        tools:ignore="ManifestOrder" />
 
 </manifest>
