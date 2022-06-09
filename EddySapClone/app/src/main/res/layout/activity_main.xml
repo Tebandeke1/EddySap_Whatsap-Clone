@@ -13,7 +13,9 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@color/purple_500">
+        android:background="@color/purple_500"
+        android:elevation="0dp"
+        app:elevation="0dp">
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

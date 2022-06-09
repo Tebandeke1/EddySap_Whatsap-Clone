@@ -2,6 +2,7 @@ package com.tabutech.eddysap.Adaptor;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.tabutech.eddysap.Model.ChatList;
 import com.tabutech.eddysap.R;
+import com.tabutech.eddysap.View.Chat.ChatsActivity;
 
 import java.util.List;
 
@@ -45,7 +47,19 @@ public class ChatListAdaptor extends RecyclerView.Adapter<ChatListAdaptor.Holder
         holder.name.setText(chatList.getUserName());
 
         //for this we needed a library to process the image
-        Glide.with(context).load(chatList.getProfileImage()).into(holder.imageView);
+
+        if (chatList.getProfileImage().equals("")){
+            holder.imageView.setImageResource(R.drawable.place_holder);//set default image
+
+        }else{
+            Glide.with(context).load(chatList.getProfileImage()).into(holder.imageView);
+        }
+
+
+        holder.itemView.setOnClickListener(v -> context.startActivity(new Intent(context, ChatsActivity.class)
+                .putExtra("userId",chatList.getUserId())
+                .putExtra("userName",chatList.getUserName())
+                .putExtra("userProfile",chatList.getProfileImage())));
 
     }
 
