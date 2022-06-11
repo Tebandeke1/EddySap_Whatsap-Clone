@@ -1,7 +1,6 @@
-package com.tabutech.eddysap.View.Profile;
+package com.tabutech.eddysap.View.Activities.Profile;
 
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
@@ -10,7 +9,6 @@ import androidx.databinding.DataBindingUtil;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -23,7 +21,6 @@ import android.webkit.MimeTypeMap;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -34,11 +31,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.tabutech.eddysap.Common.Common;
-import com.tabutech.eddysap.Model.Users.Users;
 import com.tabutech.eddysap.R;
-import com.tabutech.eddysap.View.Display.ViewProfileImageActivity;
-import com.tabutech.eddysap.View.MainActivity;
-import com.tabutech.eddysap.View.starUp.WelcomeScreenActivity;
+import com.tabutech.eddysap.View.Activities.Display.ViewProfileImageActivity;
+import com.tabutech.eddysap.View.Activities.starUp.WelcomeScreenActivity;
 import com.tabutech.eddysap.databinding.ActivityProfileBinding;
 
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package com.tabutech.eddysap.View.Display;
+package com.tabutech.eddysap.View.Activities.Display;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;

@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F8EFEDED"
-    tools:context=".View.Chat.ChatsActivity">
+    tools:context=".View.Activities.Chat.ChatsActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
@@ -116,7 +116,8 @@
                     android:layout_marginEnd="15dp"
                     android:background="@android:color/transparent"
                     android:src="@drawable/emoji"
-                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+                    app:tint="#727372" />
 
                 <EditText
                     android:id="@+id/edit_message"
@@ -137,6 +138,7 @@
                     android:layout_marginEnd="15dp"
                     android:background="@android:color/transparent"
                     android:src="@drawable/attachment"
+                    app:tint="#727372"
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                 <ImageButton
@@ -146,6 +148,7 @@
                     android:layout_gravity="center_vertical"
                     android:background="@android:color/transparent"
                     android:src="@drawable/camera"
+                    app:tint="#727372"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             </LinearLayout>

@@ -12,28 +12,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EddySap">
         <activity
-            android:name=".View.Chat.ChatsActivity"
+            android:name=".View.Activities.Profile.UserProfileActivity"
             android:exported="true" />
         <activity
-            android:name=".View.Contact.ContactActivity"
+            android:name=".View.Activities.Chat.ChatsActivity"
             android:exported="true" />
         <activity
-            android:name=".View.Display.ViewProfileImageActivity"
+            android:name=".View.Activities.Contact.ContactActivity"
             android:exported="true" />
         <activity
-            android:name=".View.Profile.ProfileActivity"
+            android:name=".View.Activities.Display.ViewProfileImageActivity"
             android:exported="true" />
         <activity
-            android:name=".View.Settings.SettingsActivity"
+            android:name=".View.Activities.Profile.ProfileActivity"
             android:exported="true" />
         <activity
-            android:name=".View.auth.SetUserInfoActivity"
+            android:name=".View.Activities.Settings.SettingsActivity"
             android:exported="true" />
         <activity
-            android:name=".View.auth.PhoneLoginActivity"
+            android:name=".View.Activities.auth.SetUserInfoActivity"
             android:exported="true" />
         <activity
-            android:name=".View.starUp.WelcomeScreenActivity"
+            android:name=".View.Activities.auth.PhoneLoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".View.Activities.starUp.WelcomeScreenActivity"
             android:exported="true" />
         <activity
             android:name=".SplashScreenActivity"
@@ -48,14 +51,14 @@
             android:name=".View.MainActivity"
             android:exported="true" />
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <uses-permission
         android:name="android.permission.ACCESS_NETWORK_STATE"
         tools:ignore="ManifestOrder" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

@@ -8,7 +8,7 @@ import android.os.Handler;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.tabutech.eddysap.View.MainActivity;
-import com.tabutech.eddysap.View.starUp.WelcomeScreenActivity;
+import com.tabutech.eddysap.View.Activities.starUp.WelcomeScreenActivity;
 
 public class SplashScreenActivity extends AppCompatActivity {
 

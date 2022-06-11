@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/black"
-    tools:context=".View.Display.ViewProfileImageActivity">
+    tools:context=".View.Activities.Display.ViewProfileImageActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"

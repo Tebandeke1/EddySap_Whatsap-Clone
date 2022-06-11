@@ -1,6 +1,5 @@
-package com.tabutech.eddysap.View.Settings;
+package com.tabutech.eddysap.View.Activities.Settings;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.databinding.DataBindingUtil;
@@ -12,16 +11,13 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.tabutech.eddysap.Common.Common;
 import com.tabutech.eddysap.R;
-import com.tabutech.eddysap.View.Display.ViewProfileImageActivity;
-import com.tabutech.eddysap.View.Profile.ProfileActivity;
+import com.tabutech.eddysap.View.Activities.Display.ViewProfileImageActivity;
+import com.tabutech.eddysap.View.Activities.Profile.ProfileActivity;
 import com.tabutech.eddysap.databinding.ActivitySettingsBinding;
 
 import java.util.Objects;

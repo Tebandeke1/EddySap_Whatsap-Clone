@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.tabutech.eddysap.Model.ChatList;
 import com.tabutech.eddysap.R;
-import com.tabutech.eddysap.View.Chat.ChatsActivity;
+import com.tabutech.eddysap.View.Activities.Chat.ChatsActivity;
 
 import java.util.List;
 
@@ -49,7 +49,7 @@ public class ChatListAdaptor extends RecyclerView.Adapter<ChatListAdaptor.Holder
         //for this we needed a library to process the image
 
         if (chatList.getProfileImage().equals("")){
-            holder.imageView.setImageResource(R.drawable.place_holder);//set default image
+            holder.imageView.setImageResource(R.drawable.place_holder);//set default image if user has no profile image
 
         }else{
             Glide.with(context).load(chatList.getProfileImage()).into(holder.imageView);

@@ -6,7 +6,7 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.auth.SetUserInfoActivity">
+    tools:context=".View.Activities.auth.SetUserInfoActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

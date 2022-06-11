@@ -19,10 +19,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.tabutech.eddysap.R;
-import com.tabutech.eddysap.View.Contact.ContactActivity;
-import com.tabutech.eddysap.View.Settings.SettingsActivity;
-import com.tabutech.eddysap.View.auth.PhoneLoginActivity;
-import com.tabutech.eddysap.View.auth.SetUserInfoActivity;
+import com.tabutech.eddysap.View.Activities.Contact.ContactActivity;
+import com.tabutech.eddysap.View.Activities.Settings.SettingsActivity;
 import com.tabutech.eddysap.databinding.ActivityMainBinding;
 import com.tabutech.eddysap.menu.CallsFragment;
 import com.tabutech.eddysap.menu.ChatsFragment;

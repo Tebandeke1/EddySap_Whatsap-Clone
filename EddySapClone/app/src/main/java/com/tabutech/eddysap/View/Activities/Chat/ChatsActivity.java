@@ -1,10 +1,9 @@
-package com.tabutech.eddysap.View.Chat;
+package com.tabutech.eddysap.View.Activities.Chat;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -15,8 +14,6 @@ import android.text.TextWatcher;
 import android.util.Log;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -27,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.tabutech.eddysap.Adaptor.ChatsAdaptor;
 import com.tabutech.eddysap.Model.Chats.Chat;
 import com.tabutech.eddysap.R;
+import com.tabutech.eddysap.View.Activities.Profile.UserProfileActivity;
 import com.tabutech.eddysap.databinding.ActivityChatsBinding;
 
 import java.text.SimpleDateFormat;
@@ -45,6 +43,8 @@ public class ChatsActivity extends AppCompatActivity {
 
     private ChatsAdaptor adaptor;
     private List<Chat> chatList;
+    private String userProfile;
+    private String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,15 +56,19 @@ public class ChatsActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-
-        String name = intent.getStringExtra("userName");
+        name = intent.getStringExtra("userName");
         receiverId = intent.getStringExtra("userId");
-        String userProfile = intent.getStringExtra("userProfile");
+        userProfile = intent.getStringExtra("userProfile");
 
         if (receiverId != null){
             binding.tvUsername.setText(name);
 
-            Glide.with(this).load(userProfile).into(binding.imageProfile);
+            if (userProfile.equals("")){
+                binding.imageProfile.setImageResource(R.drawable.place_holder);//set default image if user has no profile image
+
+            }else{
+                Glide.with(this).load(userProfile).into(binding.imageProfile);
+            }
         }
 
         binding.imageBack.setOnClickListener(v -> finish());
@@ -111,6 +115,13 @@ public class ChatsActivity extends AppCompatActivity {
 
                 binding.editMessage.setText("");
             }
+        });
+
+        binding.toolbar.setOnClickListener(v ->{
+            startActivity(new Intent(ChatsActivity.this, UserProfileActivity.class)
+            .putExtra("userId",receiverId)
+            .putExtra("userProfile",userProfile)
+            .putExtra("userName",name));
         });
 
     }

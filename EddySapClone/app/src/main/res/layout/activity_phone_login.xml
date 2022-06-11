@@ -21,7 +21,7 @@ limitations under the License.-->
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.auth.PhoneLoginActivity">
+    tools:context=".View.Activities.auth.PhoneLoginActivity">
 
     <LinearLayout
         android:id="@+id/layout1"

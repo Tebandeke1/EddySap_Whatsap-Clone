@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.tabutech.eddysap.Model.Users.Users;
 import com.tabutech.eddysap.R;
-import com.tabutech.eddysap.View.Chat.ChatsActivity;
+import com.tabutech.eddysap.View.Activities.Chat.ChatsActivity;
 
 import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
