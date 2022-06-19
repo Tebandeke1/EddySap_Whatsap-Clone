@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/add_circle.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/drawable/arrow_back.xml" value="0.15" />
         <entry key="app/src/main/res/drawable/attachment.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/drawable/bg_text_chat_left.xml" value="0.21354166666666666" />
@@ -10,11 +11,13 @@
         <entry key="app/src/main/res/drawable/call.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/drawable/camera.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/drawable/ic_baseline_call_24.xml" value="0.21354166666666666" />
-        <entry key="app/src/main/res/layout/activity_chats.xml" value="0.22" />
+        <entry key="app/src/main/res/drawable/recv_bg_mic.xml" value="0.21354166666666666" />
+        <entry key="app/src/main/res/layout/activity_chats.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_contact.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/activity_phone_login.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.19739583333333333" />
+        <entry key="app/src/main/res/layout/activity_review_send_image.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/activity_set_user_info.xml" value="0.14" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
@@ -25,13 +28,15 @@
         <entry key="app/src/main/res/layout/button_sheet_pick.xml" value="0.33" />
         <entry key="app/src/main/res/layout/chat_item_left.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/chat_item_right.xml" value="0.19739583333333333" />
+        <entry key="app/src/main/res/layout/dialog_view_user.xml" value="0.1828268210323203" />
         <entry key="app/src/main/res/layout/fragment_calls.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/fragment_chats.xml" value="0.19739583333333333" />
-        <entry key="app/src/main/res/layout/fragment_status.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_status.xml" value="0.22" />
         <entry key="app/src/main/res/layout/layout_call_list.xml" value="0.22" />
         <entry key="app/src/main/res/layout/layout_chart_list.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/layout_contact_item.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.19739583333333333" />
+        <entry key="app/src/main/res/xml/file_paths.xml" value="0.19739583333333333" />
       </map>
     </option>
   </component>

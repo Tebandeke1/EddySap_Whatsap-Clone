@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.tabutech.eddysap.Model.ChatList;
 import com.tabutech.eddysap.R;
 import com.tabutech.eddysap.View.Activities.Chat.ChatsActivity;
+import com.tabutech.eddysap.View.Activities.Dialog.DialogViewUser;
 
 import java.util.List;
 
@@ -56,10 +57,15 @@ public class ChatListAdaptor extends RecyclerView.Adapter<ChatListAdaptor.Holder
         }
 
 
-        holder.itemView.setOnClickListener(v -> context.startActivity(new Intent(context, ChatsActivity.class)
+        holder.itemView.setOnClickListener(v ->
+                context.startActivity(new Intent(context, ChatsActivity.class)
                 .putExtra("userId",chatList.getUserId())
                 .putExtra("userName",chatList.getUserName())
                 .putExtra("userProfile",chatList.getProfileImage())));
+
+        holder.imageView.setOnClickListener(v ->{
+            new DialogViewUser(context,chatList).show();
+        });
 
     }
 

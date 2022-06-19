@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -22,8 +26,8 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
                 android:src="@drawable/place_holder"
                 android:layout_margin="5dp"
                 app:civ_border_color="#FF000000"/>
@@ -52,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/my_status"
                 android:textStyle="bold"
-                android:textSize="20sp"
+                android:textSize="17sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="6dp"
                 android:id="@+id/userName"/>
@@ -74,3 +78,4 @@
 
 
 </LinearLayout>
+</layout>

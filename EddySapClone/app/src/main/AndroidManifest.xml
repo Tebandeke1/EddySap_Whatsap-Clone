@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EddySap">
         <activity
+            android:name=".View.Activities.Display.ReviewSendImageActivity"
+            android:exported="true" />
+        <activity
             android:name=".View.Activities.Profile.UserProfileActivity"
             android:exported="true" />
         <activity
@@ -50,15 +53,26 @@
         <activity
             android:name=".View.MainActivity"
             android:exported="true" />
+        
+        <provider
+            android:authorities="${applicationId}.provider"
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
     </application>
-    <uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission
         android:name="android.permission.ACCESS_NETWORK_STATE"
         tools:ignore="ManifestOrder" />
-
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
 
 </manifest>

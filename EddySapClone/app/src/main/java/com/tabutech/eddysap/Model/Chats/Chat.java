@@ -3,6 +3,7 @@ package com.tabutech.eddysap.Model.Chats;
 public class Chat {
     private String dateTime;
     private String textMessage;
+    private String uri;
     private String type;
     private String sender;
     private String receiver;
@@ -11,12 +12,21 @@ public class Chat {
 
     }
 
-    public Chat(String dateTime, String textMessage, String type, String sender, String receiver) {
+    public Chat(String dateTime, String textMessage,String uri, String type, String sender, String receiver) {
         this.dateTime = dateTime;
         this.textMessage = textMessage;
         this.type = type;
+        this.uri = uri;
         this.sender = sender;
         this.receiver = receiver;
+    }
+
+    public String getUri() {
+        return uri;
+    }
+
+    public void setUri(String uri) {
+        this.uri = uri;
     }
 
     public String getDateTime() {

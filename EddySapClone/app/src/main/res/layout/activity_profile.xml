@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout >
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".View.Activities.Profile.ProfileActivity">
 
@@ -52,7 +52,8 @@
             android:elevation="1dp"
             android:scaleType="centerCrop"
             android:src="@drawable/camera"
-            android:tint="@color/white" />
+            android:tint="@color/white"
+            tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
 
 
 
@@ -85,18 +86,19 @@
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="@string/name"
-                    android:textSize="15dp"
-                    android:textColor="#818181"/>
+                    android:textColor="#546E7A"
+                    android:textSize="15sp" />
 
                 <ImageButton
                     android:id="@+id/ed_userName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
                     android:src="@drawable/edit"
-                    android:background="@android:color/transparent"/>
+                    tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
             </LinearLayout>
 
             <TextView
@@ -106,13 +108,14 @@
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:text="UserName"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#777676"
                 android:layout_marginTop="10dp"
-                android:textSize="13sp"
-                android:text="This is not your username or pin.This name will be visible to your EddySap contacts."/>
+                android:text="This is not your username or pin.This name will be visible to your EddySap contacts."
+                android:textColor="#616161"
+                android:textSize="13sp" />
 
 
         </LinearLayout>
@@ -147,18 +150,19 @@
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="About"
-                    android:textSize="15dp"
-                    android:textColor="#818181"/>
+                    android:textColor="#546E7A"
+                    android:textSize="15sp" />
 
                 <ImageButton
                     android:id="@+id/ed_about"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
                     android:src="@drawable/edit"
-                    android:background="@android:color/transparent"/>
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
             </LinearLayout>
 
             <TextView
@@ -202,11 +206,11 @@
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="Phone"
-                    android:textSize="15dp"
-                    android:textColor="#818181"/>
+                    android:textColor="#546E7A"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 

@@ -3,17 +3,25 @@ package com.tabutech.eddysap.View.Activities.Profile;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 import androidx.databinding.DataBindingUtil;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
@@ -30,13 +38,20 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.tabutech.eddysap.BuildConfig;
 import com.tabutech.eddysap.Common.Common;
 import com.tabutech.eddysap.R;
 import com.tabutech.eddysap.View.Activities.Display.ViewProfileImageActivity;
 import com.tabutech.eddysap.View.Activities.starUp.WelcomeScreenActivity;
 import com.tabutech.eddysap.databinding.ActivityProfileBinding;
 
+import java.io.File;
+import java.io.IOException;
+import java.security.Permission;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Objects;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -130,12 +145,9 @@ public class ProfileActivity extends AppCompatActivity {
 
             binding.imageProfile.invalidate();
             Drawable dr = binding.imageProfile.getDrawable();
-
             Common.IMAGE_BITMAP = ((BitmapDrawable)dr.getCurrent()).getBitmap();
-
             ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(
                     ProfileActivity.this,binding.imageProfile,"image");
-
             Intent intent = new Intent(ProfileActivity.this, ViewProfileImageActivity.class);
             startActivity(intent,compat.toBundle());
         });
@@ -179,7 +191,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         view.findViewById(R.id.camera_profile).setOnClickListener( v ->{
 
-            Toast.makeText(this, "Camera pressed", Toast.LENGTH_SHORT).show();
+            checkCameraPermissions();
             bottomSheetDialog.dismiss();
         });
 
@@ -190,6 +202,36 @@ public class ProfileActivity extends AppCompatActivity {
         bottomSheetDialog.setOnDismissListener(dialogInterface -> bottomSheetDialog = null);
 
         bottomSheetDialog.show();
+    }
+
+    private void checkCameraPermissions() {
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA},221);
+        }else if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},222);
+        }else {
+            openCamera();
+        }
+    }
+
+    private void openCamera() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        String timeStamp = new SimpleDateFormat("yyyyMMDD_HHmmss", Locale.getDefault()).format(new Date());
+        String imageFile = "IMG_"+timeStamp+".jpg";
+
+        try {
+            File file = File.createTempFile(imageFile, String.valueOf(getExternalFilesDir(Environment.DIRECTORY_PICTURES)));
+            image = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID+".provider",file);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT,image);
+            intent.putExtra("listPhotoName",imageFile);
+            startActivityForResult(intent,400);
+
+
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     private  void openGallery() {
@@ -203,10 +245,17 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == GAlLERY_REQUEST_CODE & resultCode == RESULT_OK &data != null & (data != null ? data.getData() : null) != null){
+        if (requestCode == GAlLERY_REQUEST_CODE
+                & resultCode == RESULT_OK
+                &data != null
+                & (data != null ? data.getData() : null) != null){
 
             image = data.getData();
 
+            uploadToFireBase();
+
+        }
+        if (requestCode == 400 & resultCode == RESULT_OK){
             uploadToFireBase();
 //            try {
 //                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),image);
@@ -215,7 +264,6 @@ public class ProfileActivity extends AppCompatActivity {
 //            }catch (Exception e){
 //                e.getMessage();
 //            }
-
         }
     }
     private String getFileExtension(Uri uri){
