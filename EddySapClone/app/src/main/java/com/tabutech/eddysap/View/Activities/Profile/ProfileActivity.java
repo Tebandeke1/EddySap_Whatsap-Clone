@@ -154,6 +154,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         binding.signOut.setOnClickListener(v -> {
             signOut();
+
         });
     }
 
@@ -167,6 +168,7 @@ public class ProfileActivity extends AppCompatActivity {
                     dialogInterface.cancel();
                     FirebaseAuth.getInstance().signOut();
                     startActivity(new Intent(ProfileActivity.this, WelcomeScreenActivity.class));
+                    finish();
 
                 })
                 .setNegativeButton("No",((dialogInterface, i) -> {
@@ -212,6 +214,7 @@ public class ProfileActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},222);
         }else {
             openCamera();
+            Toast.makeText(getApplicationContext(), "Working here", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -221,13 +224,12 @@ public class ProfileActivity extends AppCompatActivity {
         String imageFile = "IMG_"+timeStamp+".jpg";
 
         try {
-            File file = File.createTempFile(imageFile, String.valueOf(getExternalFilesDir(Environment.DIRECTORY_PICTURES)));
+            File file = File.createTempFile("IMG_"+timeStamp,".jpg",
+                    getExternalFilesDir(Environment.DIRECTORY_PICTURES));
             image = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID+".provider",file);
             intent.putExtra(MediaStore.EXTRA_OUTPUT,image);
             intent.putExtra("listPhotoName",imageFile);
             startActivityForResult(intent,400);
-
-
 
         }catch (IOException e){
             e.printStackTrace();

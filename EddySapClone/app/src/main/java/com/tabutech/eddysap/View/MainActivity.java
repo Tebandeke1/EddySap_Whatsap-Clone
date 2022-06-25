@@ -13,6 +13,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +24,7 @@ import com.tabutech.eddysap.View.Activities.Contact.ContactActivity;
 import com.tabutech.eddysap.View.Activities.Settings.SettingsActivity;
 import com.tabutech.eddysap.databinding.ActivityMainBinding;
 import com.tabutech.eddysap.menu.CallsFragment;
+import com.tabutech.eddysap.menu.CameraFragment;
 import com.tabutech.eddysap.menu.ChatsFragment;
 import com.tabutech.eddysap.menu.StatusFragment;
 
@@ -37,17 +39,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         binding  = DataBindingUtil.setContentView(this,R.layout.activity_main);
+
+
+
         setUpWithViewPager(binding.viewPager);
         binding.tabLayout.setupWithViewPager(binding.viewPager);
 
+        View tab1 = LayoutInflater.from(this).inflate(R.layout.custom_camera_tab,null);
+        try {
+            binding.tabLayout.getTabAt(0).setCustomView(tab1);
+        }catch (Exception e){e.printStackTrace();}
+
+        binding.viewPager.setCurrentItem(1);
         setSupportActionBar(binding.toolbar);
 
-        binding.fabAction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, ContactActivity.class));
-            }
-        });
 
         binding.viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -74,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
@@ -100,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
         MainActivity.SectionsPagerAdaptor adaptor = new SectionsPagerAdaptor(getSupportFragmentManager());
 
+        adaptor.addFragment(new CameraFragment(),"");
         adaptor.addFragment(new ChatsFragment(),"Chats");
         adaptor.addFragment(new StatusFragment(),"Status");
         adaptor.addFragment(new CallsFragment(),"Calls");
@@ -143,16 +150,24 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("UseCompatLoadingForDrawables")
     private void changeFabIcon(final int index){
 
-        binding.fabAction.hide();
+        binding.fabaction.hide();
 
         new Handler().postDelayed(() ->{
             switch (index){
-                case 0: binding.fabAction.setImageDrawable(getDrawable(R.drawable.cart));
-                break;
-                case 1: binding.fabAction.setImageDrawable(getDrawable(R.drawable.camera));break;
-                case 2: binding.fabAction.setImageDrawable(getDrawable(R.drawable.call));break;
+                case 0: binding.fabaction.hide(); break;
+                case 1:
+                    binding.fabaction.show();
+                    binding.fabaction.setImageDrawable(getDrawable(R.drawable.cart));
+                    binding.fabaction.setOnClickListener(view ->
+                            startActivity(new Intent(MainActivity.this, ContactActivity.class)));
+                    break;
+                case 2:
+                    binding.fabaction.show();
+                    binding.fabaction.setImageDrawable(getDrawable(R.drawable.camera));break;
+                case 3:
+                    binding.fabaction.show();
+                    binding.fabaction.setImageDrawable(getDrawable(R.drawable.call));break;
             }
-            binding.fabAction.show();
         },400);
     }
 

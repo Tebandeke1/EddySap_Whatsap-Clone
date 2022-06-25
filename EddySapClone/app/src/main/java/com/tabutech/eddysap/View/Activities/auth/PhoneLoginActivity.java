@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 
 import com.google.firebase.FirebaseException;
@@ -100,6 +101,9 @@ public class PhoneLoginActivity extends AppCompatActivity {
 
                 //update UI
                 binding.btnNext.setText(R.string.confirm);
+                binding.edCode.setVisibility(View.VISIBLE);
+                binding.edPhone.setEnabled(false);
+                binding.countryCodePicker.setEnabled(false);
                 progress.dismiss();
             }
         };
@@ -148,28 +152,6 @@ public class PhoneLoginActivity extends AppCompatActivity {
                         progress.dismiss();
                         FirebaseUser user = task.getResult().getUser();
                         startActivity(new Intent(PhoneLoginActivity.this, SetUserInfoActivity.class));
-//                        if(user != null){
-//                            String userID = user.getUid();
-//
-//                            Users users = new Users(userID,
-//                                    "",
-//                                    user.getPhoneNumber(),
-//                                    "",
-//                                    "",
-//                                    "",
-//                                    "",
-//                                    "",
-//                                    "",
-//                                    "");
-//                            firestore.collection("Users").document("UserInfo").collection(userID)
-//                                    .add(users).addOnSuccessListener(documentReference -> {
-//
-//                                        finish();
-//                                    });
-//                        }else{
-//                            Toast.makeText(getApplicationContext(), "Something Wrong!!", Toast.LENGTH_SHORT).show();
-//                        }
-
                     } else {
                         Log.w(TAG, "signInWithCredential:failure", task.getException());
                         progress.dismiss();

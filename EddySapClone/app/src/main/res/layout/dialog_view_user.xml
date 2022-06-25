@@ -33,6 +33,7 @@
                 tools:ignore="UseAppTint" />
 
             <TextView
+                android:id="@+id/userName1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15sp"
@@ -51,38 +52,45 @@
         android:src="@drawable/place_holder">
 
     </ImageView>
+
     <LinearLayout
-        android:layout_below="@+id/image_profile"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image_profile"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
+
         <ImageButton
             android:id="@+id/btn_chat"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:background="@color/white"
-            android:src="@drawable/chat"/>
+            android:src="@drawable/chat" />
+
         <ImageButton
             android:id="@+id/btn_call"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:background="@color/white"
-            android:src="@drawable/call"/>
+            android:src="@drawable/call"
+            app:tint="@color/purple_500" />
+
         <ImageButton
             android:id="@+id/btn_video"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/white"
-            android:layout_height="wrap_content"
-            android:src="@drawable/video"/>
+            android:src="@drawable/video"
+            app:tint="@color/purple_500" />
+
         <ImageButton
             android:id="@+id/info"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:background="@color/white"
             android:src="@drawable/ic_baseline_info_24"
             app:tint="@color/purple_500" />

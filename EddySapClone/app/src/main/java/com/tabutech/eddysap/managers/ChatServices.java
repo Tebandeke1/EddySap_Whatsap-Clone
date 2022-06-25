@@ -49,11 +49,13 @@ public class ChatServices {
 
                     Chat chat = snapshot1.getValue(Chat.class);
 
-                    if (chat != null && chat.getSender().equals(user.getUid()) && chat.getReceiver().equals(receiverId)
-                            || Objects.requireNonNull(chat).getReceiver().equals(user.getUid()) && chat.getSender().equals(receiverId)
-                    ) {
-                        chatList.add(chat);
-                    }
+                    try{
+                        if (chat != null && chat.getSender().equals(user.getUid()) && chat.getReceiver().equals(receiverId)
+                                || Objects.requireNonNull(chat).getReceiver().equals(user.getUid()) && chat.getSender().equals(receiverId)
+                        ) {
+                            chatList.add(chat);
+                        }
+                    }catch (Exception e){e.printStackTrace();}
 
                 }
                 chatCallBack.onReadSuccess(chatList);

@@ -61,7 +61,7 @@ public class DialogViewUser {
         btnReport = dialog.findViewById(R.id.info);
 
         profile = dialog.findViewById(R.id.image_profile);
-        userName = dialog.findViewById(R.id.userName);
+        userName = dialog.findViewById(R.id.userName1);
 
         userName.setText(list.getUserName());
         Glide.with(context).load(list.getProfileImage()).into(profile);

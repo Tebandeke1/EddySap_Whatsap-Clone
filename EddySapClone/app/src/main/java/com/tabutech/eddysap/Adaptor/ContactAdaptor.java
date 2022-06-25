@@ -42,7 +42,7 @@ public class ContactAdaptor extends RecyclerView.Adapter<ContactAdaptor.ViewHold
         Users user = users.get(position);
 
         holder.userName.setText(user.getUserName());
-        holder.description.setText(user.getBio());
+        holder.description.setText(user.getUserPhone());
 
         Glide.with(context).load(user.getImageProfile()).into(holder.imageView);
 
