@@ -38,6 +38,9 @@ public class ChatServices {
         this.receiverId = str;
     }
 
+    public ChatServices(Context context) {
+        this.context = context;
+    }
 
     public void readChatData(OnReadChatCallBack chatCallBack){
         reference.child("Chats").addValueEventListener(new ValueEventListener() {

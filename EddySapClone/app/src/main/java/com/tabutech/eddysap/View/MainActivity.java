@@ -2,38 +2,58 @@ package com.tabutech.eddysap.View;
 
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
+import com.tabutech.eddysap.BuildConfig;
 import com.tabutech.eddysap.R;
 import com.tabutech.eddysap.View.Activities.Contact.ContactActivity;
 import com.tabutech.eddysap.View.Activities.Settings.SettingsActivity;
+import com.tabutech.eddysap.View.Activities.Status.AddStatusPicActivity;
 import com.tabutech.eddysap.databinding.ActivityMainBinding;
 import com.tabutech.eddysap.menu.CallsFragment;
 import com.tabutech.eddysap.menu.CameraFragment;
 import com.tabutech.eddysap.menu.ChatsFragment;
 import com.tabutech.eddysap.menu.StatusFragment;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private int GAlLERY_REQUEST_CODE = 300;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -151,24 +171,91 @@ public class MainActivity extends AppCompatActivity {
     private void changeFabIcon(final int index){
 
         binding.fabaction.hide();
+        binding.editWords.setVisibility(View.GONE);
 
         new Handler().postDelayed(() ->{
             switch (index){
-                case 0: binding.fabaction.hide(); break;
+                case 0: binding.fabaction.hide();break;
                 case 1:
                     binding.fabaction.show();
-                    binding.fabaction.setImageDrawable(getDrawable(R.drawable.cart));
-                    binding.fabaction.setOnClickListener(view ->
-                            startActivity(new Intent(MainActivity.this, ContactActivity.class)));
-                    break;
+                    binding.fabaction.setImageDrawable(getDrawable(R.drawable.cart));break;
                 case 2:
                     binding.fabaction.show();
+                    binding.editWords.setVisibility(View.VISIBLE);
                     binding.fabaction.setImageDrawable(getDrawable(R.drawable.camera));break;
                 case 3:
                     binding.fabaction.show();
                     binding.fabaction.setImageDrawable(getDrawable(R.drawable.call));break;
             }
         },400);
+
+        performOnclick(index);
     }
+
+    private void performOnclick(int index) {
+        binding.fabaction.setOnClickListener(v -> {
+            if (index == 1){
+                startActivity(new Intent(MainActivity.this, ContactActivity.class));
+            }
+            if (index == 2){
+                checkCameraPermissions();
+            }
+            if (index == 3){
+                Toast.makeText(MainActivity.this, "Call.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        binding.editWords.setOnClickListener(view ->
+            Toast.makeText(MainActivity.this, "Words edited.", Toast.LENGTH_SHORT).show());
+
+    }
+
+    private void checkCameraPermissions() {
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA},221);
+        }else if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},222);
+        }else {
+            openCamera();
+        }
+    }
+
+    public static Uri image = null;
+    private void openCamera() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
+        String imageFile = "IMG_"+timeStamp+".jpg";
+
+        try {
+            File file = File.createTempFile("IMG_"+timeStamp,".jpg",
+                    getExternalFilesDir(Environment.DIRECTORY_PICTURES));
+            image = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID+".provider",file);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT,image);
+            intent.putExtra("listPhotoName",imageFile);
+            startActivityForResult(intent,400);
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 400 & resultCode == RESULT_OK){
+           // uploadToFireBase();
+            if (image != null){
+                startActivity(new Intent(MainActivity.this, AddStatusPicActivity.class)
+                .putExtra("image",image));
+            }
+        }
+    }
+    private String getFileExtension(Uri uri){
+        ContentResolver resolver = getContentResolver();
+        MimeTypeMap typeMap = MimeTypeMap.getSingleton();
+        return  typeMap.getExtensionFromMimeType(resolver.getType(uri));
+    }
+
 
 }

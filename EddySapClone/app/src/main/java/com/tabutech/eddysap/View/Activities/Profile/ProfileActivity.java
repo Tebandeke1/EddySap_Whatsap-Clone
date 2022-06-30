@@ -89,9 +89,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void initNameLayout() {
 
-        binding.editNameLayout.setOnClickListener(v ->{
-            showLayoutEdit();
-        });
+        binding.editNameLayout.setOnClickListener(v -> showLayoutEdit());
     }
 
     private void showLayoutEdit() {
@@ -113,9 +111,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         });
 
-        view.findViewById(R.id.btn_cancel).setOnClickListener(v ->{
-            bottomSheetDialogName.dismiss();
-        });
+        view.findViewById(R.id.btn_cancel).setOnClickListener(v -> bottomSheetDialogName.dismiss());
 
         bottomSheetDialogName.setContentView(view);
         Objects.requireNonNull(bottomSheetDialogName.getWindow()).addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -137,9 +133,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void initActionClick() {
-        binding.fabCamera.setOnClickListener(view -> {
-            showButtonPickPhoto();
-        });
+        binding.fabCamera.setOnClickListener(view -> showButtonPickPhoto());
 
         binding.imageProfile.setOnClickListener(v ->{
 
@@ -152,10 +146,7 @@ public class ProfileActivity extends AppCompatActivity {
             startActivity(intent,compat.toBundle());
         });
 
-        binding.signOut.setOnClickListener(v -> {
-            signOut();
-
-        });
+        binding.signOut.setOnClickListener(v -> signOut());
     }
 
     private void signOut() {
@@ -171,9 +162,7 @@ public class ProfileActivity extends AppCompatActivity {
                     finish();
 
                 })
-                .setNegativeButton("No",((dialogInterface, i) -> {
-                    dialogInterface.cancel();
-                }));
+                .setNegativeButton("No",((dialogInterface, i) -> dialogInterface.cancel()));
 
         AlertDialog dialog = builder.create();
         dialog.show();
@@ -214,13 +203,12 @@ public class ProfileActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},222);
         }else {
             openCamera();
-            Toast.makeText(getApplicationContext(), "Working here", Toast.LENGTH_SHORT).show();
         }
     }
 
     private void openCamera() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        String timeStamp = new SimpleDateFormat("yyyyMMDD_HHmmss", Locale.getDefault()).format(new Date());
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
         String imageFile = "IMG_"+timeStamp+".jpg";
 
         try {
